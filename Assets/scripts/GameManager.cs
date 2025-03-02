@@ -1,16 +1,14 @@
 using UnityEngine;
 using TMPro;
-using System.Collections; 
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
-    private float score = 0;
+    private int score = 0; // Use int since scores are whole numbers
 
     private void Start()
     {
-        
-        UpdateScoreText();
+        UpdateScoreText(); // Initialize score display
     }
 
     public void IncrementScore()
@@ -26,5 +24,11 @@ public class GameManager : MonoBehaviour
         {
             scoreText.text = $"Score: {score}";
         }
+    }
+
+    public void ResetScore() // Optional: Call this to reset score if needed
+    {
+        score = 0;
+        UpdateScoreText();
     }
 }
