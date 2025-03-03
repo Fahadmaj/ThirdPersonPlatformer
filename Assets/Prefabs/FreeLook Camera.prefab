@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &586271119150086824
+--- !u!1 &486102652885226186
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2952151382785873096}
-  - component: {fileID: 58191088380920183}
-  - component: {fileID: 8730347771354935795}
-  - component: {fileID: 1793450201491432806}
-  - component: {fileID: 8954704819298452100}
-  - component: {fileID: 5390648319550863103}
+  - component: {fileID: 51968186787594128}
+  - component: {fileID: 1155631566010035968}
+  - component: {fileID: 1349650328495911658}
+  - component: {fileID: 7903258608233449678}
+  - component: {fileID: 8280995593578399371}
+  - component: {fileID: 4106668535482004847}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -21,28 +21,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2952151382785873096
+--- !u!4 &51968186787594128
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586271119150086824}
+  m_GameObject: {fileID: 486102652885226186}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25340128, y: 0.000000038019984, z: -0.000000021503501, w: 0.9673613}
-  m_LocalPosition: {x: -0.5, y: 3.45, z: 46.3}
+  m_LocalRotation: {x: 0.18910751, y: -4.1199153e-22, z: 9.806129e-23, w: 0.9819564}
+  m_LocalPosition: {x: 0, y: 3.1, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &58191088380920183
+--- !u!114 &1155631566010035968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586271119150086824}
+  m_GameObject: {fileID: 486102652885226186}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
@@ -60,7 +60,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 96.72934
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -79,13 +79,13 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!114 &8730347771354935795
+--- !u!114 &1349650328495911658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586271119150086824}
+  m_GameObject: {fileID: 486102652885226186}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
@@ -102,11 +102,11 @@ MonoBehaviour:
   Radius: 10
   Orbits:
     Top:
-      Radius: 2
+      Radius: 1
       Height: 5
     Center:
-      Radius: 4
-      Height: 2.25
+      Radius: 5
+      Height: 2
     Bottom:
       Radius: 2.5
       Height: 0.1
@@ -115,10 +115,10 @@ MonoBehaviour:
   HorizontalAxis:
     Value: 0
     Center: 0
-    Range: {x: -90, y: 90}
+    Range: {x: -180, y: 180}
     Wrap: 1
     Recentering:
-      Enabled: 1
+      Enabled: 0
       Wait: 1
       Time: 2
     Restrictions: 0
@@ -142,13 +142,13 @@ MonoBehaviour:
       Wait: 1
       Time: 2
     Restrictions: 0
---- !u!114 &1793450201491432806
+--- !u!114 &7903258608233449678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586271119150086824}
+  m_GameObject: {fileID: 486102652885226186}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
@@ -171,14 +171,14 @@ MonoBehaviour:
     Time: 0
     Smoothing: 0
     IgnoreY: 0
---- !u!114 &8954704819298452100
+--- !u!114 &8280995593578399371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586271119150086824}
-  m_Enabled: 0
+  m_GameObject: {fileID: 486102652885226186}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a076c17fe76165e4f8ed21498b877bf9, type: 3}
   m_Name: 
@@ -187,13 +187,13 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
---- !u!114 &5390648319550863103
+--- !u!114 &4106668535482004847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586271119150086824}
+  m_GameObject: {fileID: 486102652885226186}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89875cdc57c54474a8a74efd9b2a3b5d, type: 3}
@@ -205,43 +205,35 @@ MonoBehaviour:
   m_ControllerManager:
     Controllers:
     - Name: Look Orbit X
-      Owner: {fileID: 8730347771354935795}
+      Owner: {fileID: 1349650328495911658}
       Enabled: 1
       Input:
-        InputAction: {fileID: -5630151704836100654, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
-        Gain: 1
-        LegacyInput: 
-        LegacyGain: 1
+        LegacyInput: Mouse X
+        LegacyGain: 100
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
         AccelTime: 0.2
-        DecelTime: 0.2
+        DecelTime: 1
     - Name: Look Orbit Y
-      Owner: {fileID: 8730347771354935795}
+      Owner: {fileID: 1349650328495911658}
       Enabled: 1
       Input:
-        InputAction: {fileID: -5630151704836100654, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
-        Gain: -1
-        LegacyInput: 
-        LegacyGain: 1
+        LegacyInput: Mouse Y
+        LegacyGain: -100
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
         AccelTime: 0.2
-        DecelTime: 0.2
+        DecelTime: 1
     - Name: Orbit Scale
-      Owner: {fileID: 8730347771354935795}
+      Owner: {fileID: 1349650328495911658}
       Enabled: 1
       Input:
-        InputAction: {fileID: 5082991133974614888, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
-        Gain: -1
-        LegacyInput: 
-        LegacyGain: 1
+        LegacyInput: Mouse ScrollWheel
+        LegacyGain: -100
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
         AccelTime: 0
         DecelTime: 0
-  PlayerIndex: -1
-  AutoEnableInputs: 1

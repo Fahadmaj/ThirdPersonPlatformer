@@ -1,14 +1,16 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private InputManager inputManager;
+    [SerializeField] private CinemachineCamera freeLookCamera; // Correct camera reference
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 7f; // Adjustable jump force
+    [SerializeField] private float jumpForce = 7f;
 
     private Rigidbody rb;
-    private bool doubleJumpUsed; // Tracks if double jump has been used
-    private LayerMask groundLayer = 1 << 3; // Layer 3 for Ground
+    private bool doubleJumpUsed;
+    private LayerMask groundLayer = 1 << 3;
 
     private void Start()
     {
@@ -23,6 +25,18 @@ public class Player : MonoBehaviour
             }
         }
 
+        // Ensure Cinemachine Camera is assigned
+        if (freeLookCamera == null)
+        {
+            freeLookCamera = FindObjectOfType<CinemachineCamera>(); // Auto-find camera
+        }
+
+        if (freeLookCamera == null)
+        {
+            Debug.LogError("CinemachineCamera not found! Assign it in the Inspector.");
+            return;
+        }
+
         // Subscribe to movement and jumping events
         inputManager.OnMove.AddListener(MovePlayer);
         inputManager.OnJumpPressed.AddListener(Jump);
@@ -32,36 +46,46 @@ public class Player : MonoBehaviour
 
     private void MovePlayer(Vector2 direction)
     {
-        Vector3 moveDirection = new Vector3(direction.x, 0f, direction.y);
-        rb.AddForce(speed * moveDirection, ForceMode.Force);
+        if (freeLookCamera == null) return; // Ensure the camera is assigned
+
+        // Set player forward direction to match the camera’s forward direction
+        transform.forward = freeLookCamera.transform.forward;
+        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0); // Keep rotation level
+
+        // Get movement direction based on camera forward
+        Vector3 moveDirection = transform.forward * direction.y + freeLookCamera.transform.right * direction.x;
+        moveDirection.y = 0; // Prevent vertical movement
+
+        // Apply movement force
+        rb.AddForce(speed * moveDirection.normalized, ForceMode.Force);
     }
 
     private void Jump()
     {
-        if (IsGrounded()) // First Jump (resets double jump)
+        if (IsGrounded())
         {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); // Reset Y velocity for a clean jump
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            doubleJumpUsed = false; // Reset double jump when touching the ground
+            doubleJumpUsed = false;
         }
-        else if (!doubleJumpUsed) // Allow one extra jump mid-air
+        else if (!doubleJumpUsed)
         {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            doubleJumpUsed = true; // Mark that double jump is used
+            doubleJumpUsed = true;
         }
     }
 
     private bool IsGrounded()
     {
-        // Raycast to check if the player is touching the ground
-        bool grounded = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundLayer);
+        bool grounded = Physics.Raycast(transform.position, Vector3.down, 1.2f, groundLayer);
 
-        // Debugging log to check if the raycast is detecting the ground
-        Debug.DrawRay(transform.position, Vector3.down * 1.1f, Color.red);
+        Debug.DrawRay(transform.position, Vector3.down * 1.2f, Color.red);
         Debug.Log("Grounded: " + grounded);
 
         if (grounded)
         {
-            doubleJumpUsed = false; // Reset double jump when grounded
+            doubleJumpUsed = false;
         }
 
         return grounded;
