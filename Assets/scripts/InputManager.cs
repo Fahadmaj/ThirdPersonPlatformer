@@ -5,6 +5,7 @@ public class InputManager : MonoBehaviour
 {
     public UnityEvent<Vector2> OnMove = new UnityEvent<Vector2>();
     public UnityEvent OnJumpPressed = new UnityEvent();
+    public UnityEvent OnDashPressed = new UnityEvent(); // Added Dash Event
 
     private void Update()
     {
@@ -36,6 +37,12 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             OnJumpPressed?.Invoke();
+        }
+
+        // Handle dash input (Left Shift)
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            OnDashPressed?.Invoke();
         }
     }
 }
