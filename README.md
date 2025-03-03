@@ -41,6 +41,10 @@ This project is a third-person platformer that allows players to move fluidly th
 _A demonstration video showcasing all implemented features will be embedded here._
 
 
+https://github.com/user-attachments/assets/868fe760-dc78-456e-b8a6-a1b7fc909631
+
+
+
 
 ## Development Notes
 This project follows best coding practices:
